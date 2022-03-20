@@ -1,0 +1,36 @@
+schema { 
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  listUsers(nextToken: String): UsersPage
+}
+
+type Mutation {
+  addTenant(input: UserInput!): Boolean
+  @aws_api_key
+
+  addUser(input: UserInput!): Boolean
+  @aws_auth(cognito_groups: ["Admin"])
+}
+
+type UsersPage {
+  users: [User!]
+  nextToken: String
+}
+
+input UserInput {
+  firstName: String!
+  lastName: String!
+  email: AWSEmail!
+}
+
+type User {
+  userId: ID!
+  firstName: String!
+  lastName: String!
+  email: AWSEmail!
+  createdAt: AWSDateTime!
+  lastModified: AWSDateTime!
+}

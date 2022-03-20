@@ -1,0 +1,38 @@
+name: multi-tenant-cognito-demo
+schema: schema.graphql
+authenticationType: AMAZON_COGNITO_USER_POOLS
+userPoolConfig:
+  awsRegion: ${aws:region}
+  defaultAction: ALLOW
+  userPoolId: !Ref UserPool
+additionalAuthenticationProviders:
+  - authenticationType: API_KEY
+mappingTemplatesLocation: mapping-templates
+mappingTemplates:
+  - type: Query
+    field: listUsers
+    dataSource: usersTable
+  - type: Mutation
+    field: addTenant
+    dataSource: addTenantFunction
+    request: false
+    response: false
+  - type: Mutation
+    field: addUser
+    dataSource: addUserFunction
+    request: false
+    response: false
+dataSources:
+  - type: AMAZON_DYNAMODB
+    name: usersTable
+    config:
+      tableName: !Ref UsersTable 
+  - type: AWS_LAMBDA
+    name: addTenantFunction
+    config:
+      functionName: addTenant
+  - type: AWS_LAMBDA
+    name: addUserFunction
+    config:
+      functionName: addUser
+  

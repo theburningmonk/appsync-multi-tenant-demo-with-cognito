@@ -1,0 +1,14 @@
+{
+  "version" : "2018-05-29",
+  "operation" : "Query",
+  "query" : {
+    "expression" : "tenantId = :tenantId",
+    "expressionValues" : {
+      ":tenantId" : $utils.dynamodb.toDynamoDBJson($context.identity.claims["custom:tenant_id"])
+    }
+  },
+  "nextToken" : $util.toJson($context.arguments.nextToken),
+  "limit" : 25,
+  "scanIndexForward" : false,
+  "select" : "ALL_ATTRIBUTES"
+}

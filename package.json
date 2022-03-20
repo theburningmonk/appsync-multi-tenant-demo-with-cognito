@@ -1,0 +1,28 @@
+{
+  "name": "appsync-multi-tenant-demo-with-cognito",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Demo app for how to implement multi-tenancy with AppSync and Cognito. Part of the AppSync Masterclass (https://appsyncmasterclass.com).",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theburningmonk/appsync-multi-tenant-demo-with-cognito.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theburningmonk/appsync-multi-tenant-demo-with-cognito/issues"
+  },
+  "homepage": "https://github.com/theburningmonk/appsync-multi-tenant-demo-with-cognito#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.1096.0",
+    "serverless": "^3.7.9",
+    "serverless-appsync-plugin": "^1.12.1",
+    "serverless-iam-roles-per-function": "^3.2.0"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}
