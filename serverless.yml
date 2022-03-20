@@ -33,6 +33,7 @@ functions:
     handler: functions/add-user.handler
     environment:
       USER_POOL_ID: !Ref UserPool
+      USERS_TABLE_NAME: !Ref UsersTable
     iamRoleStatements:
       - Effect: Allow
         Action: 
