@@ -12,7 +12,7 @@ type Mutation {
   @aws_api_key
 
   addUser(input: UserInput!): Boolean
-  @aws_auth(cognito_groups: ["Admin"])
+  @aws_cognito_user_pools(cognito_groups: ["Admin"])
 }
 
 type UsersPage {
